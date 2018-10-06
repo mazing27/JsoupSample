@@ -7,7 +7,7 @@ public interface ApiConfig {
     String SLASH = "/";
     String PAGE = "page";
 
-    String DBMZ_URL = "http://www.dbmeinv.com/dbgroup/show.htm?cid=";
+    String DBMZ_URL = "http://www.dbmeinv.com/index.htm?cid=";
     String dou_ban_link = "&pager_offset=";
 
     String M_ZI_TU_URL = "http://www.mzitu.com/";

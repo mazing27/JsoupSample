@@ -57,7 +57,7 @@ public class JsoupFictionHomeManager {
         for (Element element : select) {
             kswModel = new FictionModel();
             kswModel.title = element.select("img[src]").attr("alt");
-            kswModel.url = element.select("img[src]").attr("src");
+            kswModel.url = element.select("img[src]").attr("abs:src");
             kswModel.detailUrl = element.select("a:has(img)").attr("abs:href");
             kswModel.message = element.select("dd").text();
             kswModel.type = TYPE_HEADER;
@@ -173,7 +173,15 @@ public class JsoupFictionHomeManager {
         list.add(pushTitle);
 
         FictionModel kswHomeModel;
-        Elements select = document.select("div#newscontent").select("div.l").select("span.s2").select("a");
+        Elements select;
+        switch (document.baseUri()) {
+            case ApiConfig.BI_QU_GE_URL:
+                select = document.select("div.up").select("div.l").select("span.s2").select("a");
+                break;
+            default:
+                select = document.select("div#newscontent").select("div.l").select("span.s2").select("a");
+                break;
+        }
         for (Element element : select) {
             kswHomeModel = new FictionModel();
             kswHomeModel.title = element.text();
@@ -181,7 +189,6 @@ public class JsoupFictionHomeManager {
             kswHomeModel.type = TYPE_RECENT;
             list.add(kswHomeModel);
         }
-
         initAdd(list);
     }
 

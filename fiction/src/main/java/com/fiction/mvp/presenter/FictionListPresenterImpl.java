@@ -25,9 +25,6 @@ public class FictionListPresenterImpl extends BasePresenterImpl<List<FictionMode
     @Override
     public void netWork(String type, int tabPosition) {
         switch (type) {
-            case ApiConfig.Type.KSW:
-                netWork(ApiConfig.KSW_URL + UIUtils.getStringArray(R.array.tab_ksw_suffix)[tabPosition - 1]);
-                break;
             case ApiConfig.Type.BI_QU_GE:
                 netWork(ApiConfig.BI_QU_GE_URL + UIUtils.getStringArray(R.array.tab_bi_qu_ge_suffix)[tabPosition - 1]);
                 break;

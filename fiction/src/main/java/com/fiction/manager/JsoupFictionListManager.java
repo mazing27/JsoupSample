@@ -51,7 +51,7 @@ public class JsoupFictionListManager {
         for (Element element : select) {
             kswListModel = new FictionModel();
             kswListModel.title = element.select("img[src]").attr("alt");
-            kswListModel.url = element.select("img[src]").attr("src");
+            kswListModel.url = element.select("img[src]").attr("abs:src");
             kswListModel.detailUrl = element.select("a:has(img)").attr("abs:href");
             kswListModel.message = element.select("dd").text();
             kswListModel.type = TYPE_HEADER;
@@ -70,7 +70,12 @@ public class JsoupFictionListManager {
         list.add(pushTitle);
 
         FictionModel kswListModel;
-        Elements select = document.select("div#newscontent").select("div.l").select("span.s2").select("a");
+        Elements select;
+        if (document.baseUri().contains(ApiConfig.BI_QU_GE_URL)) {
+            select = document.select("div.up").select("div.l").select("span.s2").select("a");
+        } else {
+            select = document.select("div#newscontent").select("div.l").select("span.s2").select("a");
+        }
         for (Element element : select) {
             kswListModel = new FictionModel();
             kswListModel.title = element.text();
@@ -107,12 +112,24 @@ public class JsoupFictionListManager {
     public List<FictionModel> getContents() {
         List<FictionModel> list = new ArrayList<>();
         FictionModel contentsModel;
-        Elements a = document.select("#list").select("a");
-        for (Element element : a) {
+        Elements select;
+        if (document.baseUri().contains(ApiConfig.BI_QU_GE_URL)) {
+            select = document.select(".listmain").select("a");
+        } else {
+            select = document.select("#list").select("a");
+        }
+
+        for (int i = 0; i < select.size(); i++) {
+            Element element = select.get(i);
+            if (document.baseUri().contains(ApiConfig.BI_QU_GE_URL) && i < 6) {
+                continue;
+            }
             contentsModel = new FictionModel();
             contentsModel.title = element.text();
             contentsModel.detailUrl = element.attr("abs:href");
-            list.add(contentsModel);
+            if (!list.contains(contentsModel)){
+                list.add(contentsModel);
+            }
         }
         return list;
     }
@@ -141,12 +158,15 @@ public class JsoupFictionListManager {
         String divClass;
         switch (type) {
             case ApiConfig.Type.BI_QU_GE:
-                divClass = "div.bottem";
+                divClass = "div.page_chapter";
+                detailModel.title = document.select("div.content").select("h1").text();
                 break;
             default:
                 divClass = "div.bottem2";
+                detailModel.title = document.select("div.bookname").select("h1").text();
                 break;
         }
+        detailModel.message = document.select("#content").html();
         Elements select = document.select(divClass).select("a[href$=.html]");
         if (select.size() == 1) {
             if (TextUtils.equals(select.text(), ApiConfig.NEXT_PAGE)) {
@@ -166,8 +186,6 @@ public class JsoupFictionListManager {
                 }
             }
         }
-        detailModel.title = document.select("div.bookname").select("h1").text();
-        detailModel.message = document.select("#content").html();
         return detailModel;
     }
 }

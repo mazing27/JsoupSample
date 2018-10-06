@@ -10,25 +10,20 @@ public interface ApiConfig {
     String NEXT_PAGE = "下一章";
 
     //搜索
-    String SEARCH_URL = "http://zhannei.baidu.com/cse/search?q=";
-    String SEARCH_SUFFIX = "&s=17512219138159063592";
+    String SEARCH_URL = "https://www.zwdu.com/search.php?keyword=";
 
     //81中文网
-    String ZW81_URL = "http://www.81zw.com/";
+    String ZW81_URL = "https://www.zwdu.com/";
 
     //笔趣阁
-    String BI_QU_GE_URL = "http://www.biqiuge.com/";
-
-    //零点看书
-    String KSW_URL = "http://www.00ksw.net/";
+    String BI_QU_GE_URL = "https://www.biqiuge.com/";
 
     //飘天文学
-    String PIAO_TIAN_URL = "http://www.piaotian.com/";
+    String PIAO_TIAN_URL = "https://www.piaotian.com/";
 
     interface Type {
         String ZW_81 = "81";
         String BI_QU_GE = "笔趣阁";
-        String KSW = "零点看书";
         String PIAO_TIAN = "飘天文学";
     }
 }

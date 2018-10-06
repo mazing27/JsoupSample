@@ -26,9 +26,6 @@ public class FictionHomePresenterImpl extends BasePresenterImpl<List<FictionMode
             case ApiConfig.Type.ZW_81:
                 netWork(ApiConfig.ZW81_URL);
                 break;
-            case ApiConfig.Type.KSW:
-                netWork(ApiConfig.KSW_URL);
-                break;
             case ApiConfig.Type.BI_QU_GE:
                 netWork(ApiConfig.BI_QU_GE_URL);
                 break;

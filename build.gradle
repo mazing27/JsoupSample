@@ -1,17 +1,18 @@
 buildscript {
     repositories {
         jcenter()
+        google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.3'
-        classpath 'me.tatarka:gradle-retrolambda:3.5.0'
-        classpath 'org.greenrobot:greendao-gradle-plugin:3.2.1'
+        classpath 'com.android.tools.build:gradle:3.2.0'
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.2.2'
     }
 }
 allprojects {
     repositories {
         jcenter()
         maven { url "https://jitpack.io" }
+        google()
     }
 }
 task clean(type: Delete) {
@@ -21,10 +22,9 @@ ext {
     proguardFile = 'proguard-android.txt'
     proguardSuffixFile = 'proguard-rules.pro'
 
-    compileSdkVersion = 25
-    buildToolsVersion = '25.0.2'
+    compileSdkVersion = 28
     minSdkVersion = 16
-    targetSdkVersion = 25
+    targetSdkVersion = 28
     versionCode = 1
     versionName = '1.0'
     resConfigs = 'zh'
@@ -35,18 +35,16 @@ ext {
     fictionApplicationId = 'com.fiction'
     magneticApplicationId = 'com.magnetic'
 
-    supportVersion = '25.3.0'
-    glideVersion = '3.7.0'
-    jsoupNetWorkVersion = '0.0.7'
+    supportVersion = '28.0.0'
+    glideVersion = '3.8.0'
+    jsoupNetWorkVersion = '0.0.8'
     klogVersion = '1.6.0'
-    flowVersion = '1.10@aar'
-    greenDaoVersion = '3.2.0'
-    flexboxVersion = '0.2.6'
-    circularVersion = '2.0.1@aar'
-    leakcanaryVersion = 'leakcanary-android:1.5.1'
+    greenDaoVersion = '3.2.2'
+    flexboxVersion = '1.1.0'
+    leakcanaryVersion = 'leakcanary-android:1.6.1'
     xAdapterVersion = '0.1.8'
     dialogVersion = '0.9.4.5'
-    jiecaoVideoVersion = '5.5.4'
+    jiecaoVideoVersion = '6.3.1'
 
     imageStorePath = 'image.jks'
     imagePassword = '123456'

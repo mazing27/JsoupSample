@@ -120,9 +120,6 @@ public class TabFragment extends BaseFragment implements RxBusCallBack<String> {
                 case ApiConfig.Type.BI_QU_GE:
                     name = UIUtils.getStringArray(R.array.tab_bi_qu_ge);
                     break;
-                case ApiConfig.Type.KSW:
-                    name = UIUtils.getStringArray(R.array.tab_ksw);
-                    break;
                 case ApiConfig.Type.PIAO_TIAN:
                     name = UIUtils.getStringArray(R.array.tab_pt);
                     break;

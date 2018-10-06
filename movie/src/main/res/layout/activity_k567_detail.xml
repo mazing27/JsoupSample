@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard
+            <cn.jzvd.JzvdStd
                 android:id="@+id/videoPlay"
                 android:layout_width="match_parent"
                 android:layout_height="260dp" />

@@ -24,13 +24,11 @@ public class MainPresenterImpl extends BasePresenterImpl<BaseModel, ViewManager.
     public static final int FIRST_FRAGMENT = -1;
     private static final int TYPE_ZW_FRAGMENT = 0;
     private static final String TYPE_ZW_TAG = "ZW";
-    private static final int TYPE_KSW_FRAGMENT = 1;
-    private static final String TYPE_KSW_TAG = "KSW";
-    private static final int TYPE_BGQ_FRAGMENT = 2;
+    private static final int TYPE_BGQ_FRAGMENT = 1;
     private static final String TYPE_BQG_TAG = "BQG";
-    private static final int TYPE_PT_FRAGMENT = 3;
+    private static final int TYPE_PT_FRAGMENT = 2;
     private static final String TYPE_PT_TAG = "PT";
-    private Fragment zwFragment, kswFragment, bqgFragment, ptFragment;
+    private Fragment zwFragment, bqgFragment, ptFragment;
 
 
     public MainPresenterImpl(ViewManager.MainView view) {
@@ -52,9 +50,6 @@ public class MainPresenterImpl extends BasePresenterImpl<BaseModel, ViewManager.
                 break;
             case R.id.bi_qu_ge:
                 setSelectFragment(TYPE_BGQ_FRAGMENT);
-                break;
-            case R.id.ksw:
-                setSelectFragment(TYPE_KSW_FRAGMENT);
                 break;
             case R.id.piao_tian:
                 setSelectFragment(TYPE_PT_FRAGMENT);
@@ -78,9 +73,6 @@ public class MainPresenterImpl extends BasePresenterImpl<BaseModel, ViewManager.
         if (null != zwFragment) {
             zwFragment = null;
         }
-        if (null != kswFragment) {
-            kswFragment = null;
-        }
         if (null != bqgFragment) {
             bqgFragment = null;
         }
@@ -102,16 +94,6 @@ public class MainPresenterImpl extends BasePresenterImpl<BaseModel, ViewManager.
                 } else {
 
                     transaction.show(zwFragment);
-                }
-                break;
-            case TYPE_KSW_FRAGMENT:
-                kswFragment = manager.findFragmentByTag(TYPE_KSW_TAG);
-                hideFragment(transaction);
-                if (null == kswFragment) {
-                    kswFragment = TabFragment.newInstance(ApiConfig.Type.KSW);
-                    transaction.add(R.id.fragment, kswFragment, TYPE_KSW_TAG);
-                } else {
-                    transaction.show(kswFragment);
                 }
                 break;
             case TYPE_BGQ_FRAGMENT:
@@ -140,9 +122,6 @@ public class MainPresenterImpl extends BasePresenterImpl<BaseModel, ViewManager.
 
 
     private void hideFragment(FragmentTransaction transaction) {
-        if (null != kswFragment) {
-            transaction.hide(kswFragment);
-        }
         if (null != bqgFragment) {
             transaction.hide(bqgFragment);
         }

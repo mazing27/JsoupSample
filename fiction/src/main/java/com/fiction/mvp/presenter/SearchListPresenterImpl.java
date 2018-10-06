@@ -24,7 +24,7 @@ public class SearchListPresenterImpl extends BasePresenterImpl<List<FictionModel
 
     @Override
     public void startSearch(String fictionName, int page) {
-        netWork(ApiConfig.SEARCH_URL + fictionName + "&p=" + page + ApiConfig.SEARCH_SUFFIX);
+        netWork(ApiConfig.SEARCH_URL + fictionName + "&page=" + page);
     }
 
 

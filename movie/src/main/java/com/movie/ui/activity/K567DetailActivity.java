@@ -23,10 +23,8 @@ import com.xadapter.adapter.XRecyclerViewAdapter;
 
 import java.util.List;
 
-import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
-import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
+import cn.jzvd.JzvdStd;
 
-import static com.movie.R.id.recyclerView;
 
 /**
  * by y on 2017/6/10.
@@ -45,7 +43,7 @@ public class K567DetailActivity extends BaseActivity<K567DetailPresenterImpl>
     private Toolbar mToolbar;
     private LoadMoreRecyclerView mRecyclerView;
     private SwipeRefreshLayout refreshLayout;
-    private JCVideoPlayerStandard jcVideoPlayerStandard;
+    private JzvdStd jcVideoPlayerStandard;
 
     private XRecyclerViewAdapter<MovieModel> mAdapter;
 
@@ -99,7 +97,7 @@ public class K567DetailActivity extends BaseActivity<K567DetailPresenterImpl>
 
     @Override
     protected void initById() {
-        mRecyclerView = getView(recyclerView);
+        mRecyclerView = getView(R.id.recyclerView);
         mToolbar = getView(R.id.toolbar);
         refreshLayout = getView(R.id.refresh_layout);
         jcVideoPlayerStandard = getView(R.id.videoPlay);
@@ -133,7 +131,7 @@ public class K567DetailActivity extends BaseActivity<K567DetailPresenterImpl>
                 mAdapter.addAllData(data);
                 jcVideoPlayerStandard.setVisibility(View.VISIBLE);
                 KLog.i(data.get(0).playUrl);
-                jcVideoPlayerStandard.setUp(data.get(0).playUrl, JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL, title);
+                jcVideoPlayerStandard.setUp(data.get(0).playUrl, title, JzvdStd.SCREEN_WINDOW_NORMAL);
                 ImageLoaderUtils.display(jcVideoPlayerStandard.thumbImageView, imageUrl);
             }
         }
@@ -161,7 +159,7 @@ public class K567DetailActivity extends BaseActivity<K567DetailPresenterImpl>
 
     @Override
     public void onBackPressed() {
-        if (JCVideoPlayer.backPress()) {
+        if (JzvdStd.backPress()) {
             return;
         }
         super.onBackPressed();
@@ -170,7 +168,7 @@ public class K567DetailActivity extends BaseActivity<K567DetailPresenterImpl>
     @Override
     protected void onPause() {
         super.onPause();
-        JCVideoPlayer.releaseAllVideos();
+        JzvdStd.releaseAllVideos();
     }
 
     @Override

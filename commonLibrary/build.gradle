@@ -1,9 +1,7 @@
 apply plugin: 'com.android.library'
-apply plugin: 'me.tatarka.retrolambda'
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
-    buildToolsVersion rootProject.buildToolsVersion
     defaultConfig {
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
@@ -17,20 +15,20 @@ android {
     }
 }
 dependencies {
-    compile "com.android.support:appcompat-v7:$supportVersion"
-    compile "com.android.support:cardview-v7:$supportVersion"
-    compile "com.android.support:design:$supportVersion"
-    compile "com.github.bumptech.glide:glide:$glideVersion"
-    compile "com.github.zhaokaiqiang.klog:library:$klogVersion"
-    compile "org.greenrobot:greendao:$greenDaoVersion"
-    compile "com.google.android:flexbox:$flexboxVersion"
+    api "com.android.support:appcompat-v7:$supportVersion"
+    api "com.android.support:cardview-v7:$supportVersion"
+    api "com.android.support:design:$supportVersion"
+    api "com.github.bumptech.glide:glide:$glideVersion"
+    api "com.github.zhaokaiqiang.klog:library:$klogVersion"
+    api "org.greenrobot:greendao:$greenDaoVersion"
+    api "com.google.android:flexbox:$flexboxVersion"
 //    debugCompile "com.squareup.leakcanary:$leakcanaryVersion"
 //    releaseCompile "com.squareup.leakcanary:$leakcanaryVersion"
 //    testCompile "com.squareup.leakcanary:$leakcanaryVersion"
-    compile "com.ydevelop:rxJsoupNetWork:$jsoupNetWorkVersion"
-    compile "com.xadapter:xadapter:$xAdapterVersion"
-    compile "fm.jiecao:jiecaovideoplayer:$jiecaoVideoVersion"
-    compile("com.afollestad.material-dialogs:core:$dialogVersion", {
+    api "com.ydevelop:rxJsoupNetWork:$jsoupNetWorkVersion"
+    api "com.xadapter:xadapter:$xAdapterVersion"
+    api "cn.jzvd:jiaozivideoplayer:$jiecaoVideoVersion"
+    api("com.afollestad.material-dialogs:core:$dialogVersion", {
         exclude group: 'com.android.support'
     })
 }
